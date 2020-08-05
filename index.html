@@ -44,17 +44,25 @@
 <script>
 
   const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
 
   function logText(e){
     console.log(this.classList.value);
-    e.stopPropagation(); //this function says 'stop on this one, I only want the one I clicked'
+   // e.stopPropagation(); //this function says 'stop on this one, I only want the one I clicked'
                           //stopPropagation() = "stop bubbling!"
   } 
 
-  divs.forEach(div => div.addEventListener('click',logText, {capture: false}))
+  divs.forEach(div => div.addEventListener('click',logText, {
+    capture: false, 
+    once: true // makes event listener unbind itself. the same as adding removeEventListener right after
+  }))
 
   //adding the option 'capture = true' makes the events fire on the capture DOWN instead of the bubble UP (default is bubble up, capture: false)//
 
+
+  button.addEventListener('click',function(){alert("this only fires once!")}, {
+    once: true
+  })
 
 </script>
 </body>
