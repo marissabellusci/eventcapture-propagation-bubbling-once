@@ -49,7 +49,9 @@
     console.log(this.classList.value);
   }
 
-  divs.forEach(div => div.addEventListener('click',logText))
+  divs.forEach(div => div.addEventListener('click',logText, {capture: true}))
+
+  //adding the option 'capture = true' makes the events fire on the capture DOWN instead of the bubble UP (default is bubble up)//
 
 
 </script>
