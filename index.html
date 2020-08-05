@@ -47,11 +47,12 @@
 
   function logText(e){
     console.log(this.classList.value);
+    e.stopPropagation(); //this function says 'stop on this one, I only want the one I clicked'
   }
 
-  divs.forEach(div => div.addEventListener('click',logText, {capture: true}))
+  divs.forEach(div => div.addEventListener('click',logText, {capture: false}))
 
-  //adding the option 'capture = true' makes the events fire on the capture DOWN instead of the bubble UP (default is bubble up)//
+  //adding the option 'capture = true' makes the events fire on the capture DOWN instead of the bubble UP (default is bubble up, capture: false)//
 
 
 </script>
